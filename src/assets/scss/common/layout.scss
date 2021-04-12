@@ -1,0 +1,45 @@
+.row{
+  display: flex;
+  flex-direction: row;
+  // align-items: center;
+  &-reverse{
+    flex-direction: row-reverse;
+  }
+}
+.col{
+  display: flex;
+  flex-direction: column;
+  &-reverse{
+    flex-direction: column-reverse;
+  }
+}
+// flex：份数
+@for $n from 1 through 24{
+  .flex-#{$n} { flex: $n }
+}
+.flex-none{
+  flex: none;
+}
+.center-x{
+  justify-content: center;
+  text-align: center;
+}
+.center-y{
+  align-items: center;
+}
+.center{
+  justify-content: center;
+  align-items: center;
+}
+$flex-wrap: nowrap, wrap, wrap-reverse;
+@each $val in $flex-wrap {
+  .#{$val} { flex-wrap: $val }
+}
+$justify-content: flex-start, flex-end, space-between, space-around;
+@each $val in $justify-content {
+  .#{$val} { justify-content: $val }
+}
+$align-items: flex-start, flex-end, baseline, stretch;
+@each $val in $align-items {
+  .#{$val} { align-items: $val }
+}

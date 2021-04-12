@@ -1,0 +1,163 @@
+@import './var.scss';
+@import '../mixins/border.scss';
+@import '../mixins/ellipsis.scss';
+
+// 遍历生成padding和margin(2-100之间的偶数)
+@for $size from 0 through 100{
+  @if $size%2 == 0 {
+    .p#{$size} { padding: $size + $unit !important; }
+    .pt#{$size} { padding-top: $size + $unit !important; }
+    .pb#{$size} { padding-bottom: $size + $unit !important; }
+    .pl#{$size} { padding-left: $size + $unit !important; }
+    .pr#{$size} { padding-right: $size + $unit !important; }
+    .ptb#{$size} { padding-top: $size + $unit !important; padding-bottom: $size + $unit !important; }
+    .plr#{$size} { padding-left: $size + $unit !important; padding-right: $size + $unit !important; }
+    .m#{$size} { margin: $size + $unit !important; }
+    .mt#{$size} { margin-top: $size + $unit !important; }
+    .mb#{$size} { margin-bottom: $size + $unit !important; }
+    .ml#{$size} { margin-left: $size + $unit !important; }
+    .mr#{$size} { margin-right: $size + $unit !important; }
+    .mtb#{$size} { margin-top: $size + $unit !important; margin-bottom: $size + $unit !important; }
+    .mlr#{$size} { margin-left: $size + $unit !important; margin-right: $size + $unit !important; }
+  }
+}
+
+// 字体大小
+@for $size from 10 through 40{
+  .fs#{$size} { font-size: $size + $unit !important; }
+}
+@for $size from 0 through 20{
+  .z-index#{$size} { z-index: $size !important; }
+}
+
+// 字体粗细
+$fontWeights: 100, 200, 300, 400, 500, 600, 700, 800, 900;
+@each $weight in $fontWeights {
+  .fw#{$weight} { font-weight: $weight !important;}
+}
+
+// 宽高
+@for $size from 2 through 500{
+  @if $size%2 == 0 {
+    .w#{$size} { width: $size + $unit !important; }
+    .h#{$size} { height: $size + $unit !important; }
+    .w-h#{$size} { width: $size + $unit; height: $size + $unit !important; }
+    .l-h#{$size} { line-height: $size + $unit !important; }
+    .wpct#{$size} { width: percentage($size/100)  !important; }
+  }
+}
+
+// 圆角大小
+@for $size from 1 through 50{
+  .radius#{$size} { border-radius: $size + $unit !important; }
+}
+.radius{
+  border-radius: 50% !important;;
+}
+
+// 颜色
+$color-list: (
+  'red': $red,
+  'red-light': $red-light,
+  'red-dark': $red-dark,
+  'green': $green,
+  'green-light': $green-light,
+  'green-dark': $green-dark,
+  'blue': $blue,
+  'blue-light': $blue-light,
+  'blue-dark': $blue-dark,
+  'orange': $orange,
+  'orange-light': $orange-light,
+  'orange-dark': $orange-dark,
+  'pink': $pink,
+  'pink-light': $pink-light,
+  'pink-dark': $pink-dark,
+  'gray': $gray,
+  'gray-light': $gray-light,
+  'gray-dark': $gray-dark,
+  'black': $black,
+  'black-light': $black-light,
+  'black-dark': $black-dark,
+  'white': $white
+);
+@each $key,$color in $color-list {
+  .#{$key} { color: $color !important; }
+  .#{$key}-bg { background-color: $color !important; }
+}
+
+.w-full{
+  width: 100%;
+}
+.h-full{
+  height: 100%;
+}
+.w-h-full{
+  width: 100%;
+  height: 100%;
+}
+
+@for $size from -50 through 100{
+  .top#{$size} { top: $size + $unit !important; }
+  .bottom#{$size} { bottom: $size + $unit !important; }
+  .left#{$size} { left: $size + $unit !important; }
+  .right#{$size} { right: $size + $unit !important; }
+}
+.relative{
+  position: relative !important;
+}
+.absolute{
+  position: absolute !important;
+}
+.fixed{
+  position: fixed !important;
+}
+
+.y-scroll{
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+}
+.x-scroll{
+  overflow-x: scroll !important;
+  overflow-y: hidden !important;
+}
+.scroll{
+  overflow: scroll !important;
+}
+.overflow-auto{
+  overflow: auto !important;
+}
+.hidden{
+ overflow: hidden !important;
+}
+.border-box{
+  box-sizing: border-box !important;
+}
+
+.border-bottom{
+  @include border-bottom();
+}
+.ellipsis{
+  @include ellipsis();
+}
+.ellipsis2{
+  @include multi-ellipsis(2);
+}
+.ellipsis3{
+  @include multi-ellipsis(3);
+}
+.pointer{
+  cursor: pointer !important;
+}
+
+.pos-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.text-center{
+  text-align: center;
+}
+.text-right{text-align: right;}
+.text-left{text-align: left;}
+.mauto{ margin: 0 auto ;}
